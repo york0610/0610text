@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClimbCoach AI｜攀岩動作優化助手</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>ClimbCoach AI</h1>
+      <p>
+        使用姿態偵測模型分析攀岩者動作，即時提供重心、手腳配置與發力節奏建議。
+      </p>
+      <button id="startCameraBtn">開啟鏡頭分析</button>
+    </header>
+
+    <main class="layout">
+      <section class="panel video-panel">
+        <h2>即時動作偵測</h2>
+        <div class="video-wrapper">
+          <video id="inputVideo" autoplay playsinline muted></video>
+          <canvas id="overlayCanvas"></canvas>
+        </div>
+        <p id="cameraStatus" class="status">尚未啟動攝影機。</p>
+      </section>
+
+      <section class="panel metrics-panel">
+        <h2>動作評估</h2>
+        <ul class="metrics">
+          <li>
+            <span>重心穩定度</span>
+            <strong id="stabilityScore">--</strong>
+          </li>
+          <li>
+            <span>手腳協調性</span>
+            <strong id="coordinationScore">--</strong>
+          </li>
+          <li>
+            <span>髖部延展度</span>
+            <strong id="hipExtensionScore">--</strong>
+          </li>
+        </ul>
+
+        <div class="tips">
+          <h3>AI 建議</h3>
+          <ol id="tipsList">
+            <li>啟動分析後，系統會根據你的姿勢提供建議。</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <section class="panel roadmap">
+      <h2>如何擴充成完整攀岩教練系統</h2>
+      <div class="grid">
+        <article>
+          <h3>1. 模型層</h3>
+          <p>可整合 MediaPipe Pose 或 MoveNet 進行 2D 骨架偵測，再加入時序模型分析動作流暢度。</p>
+        </article>
+        <article>
+          <h3>2. 規則層</h3>
+          <p>依照攀岩動作建立規則：例如「跨步時髖部高度」與「轉體時肩髖角度」門檻。</p>
+        </article>
+        <article>
+          <h3>3. 教學層</h3>
+          <p>將模型結果轉成可執行建議：例如「左腳踩點前先收核心」與「右手拉點時先轉髖」。</p>
+        </article>
+      </div>
+    </section>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
